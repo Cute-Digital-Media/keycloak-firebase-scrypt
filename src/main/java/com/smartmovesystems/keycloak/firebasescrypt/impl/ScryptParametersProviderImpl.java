@@ -4,10 +4,10 @@ import com.smartmovesystems.keycloak.firebasescrypt.ScryptHashParametersRepresen
 import com.smartmovesystems.keycloak.firebasescrypt.ScryptParametersProvider;
 import com.smartmovesystems.keycloak.firebasescrypt.jpa.ScryptHashParametersEntity;
 import com.smartmovesystems.keycloak.firebasescrypt.jpa.ScryptParametersEntityProvider;
+import jakarta.persistence.NoResultException;
 import org.keycloak.connections.jpa.JpaConnectionProvider;
 import org.keycloak.models.KeycloakSession;
 
-import javax.persistence.NoResultException;
 import java.util.ArrayList;
 import java.util.List;
 

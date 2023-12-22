@@ -2,15 +2,16 @@ package com.smartmovesystems.keycloak.firebasescrypt;
 
 import org.keycloak.component.ComponentModel;
 import org.keycloak.models.*;
-import org.keycloak.models.cache.UserCache;
 import org.keycloak.policy.PasswordPolicyProvider;
+import org.keycloak.provider.InvalidationHandler;
 import org.keycloak.provider.Provider;
 import org.keycloak.services.clientpolicy.ClientPolicyManager;
 import org.keycloak.sessions.AuthenticationSessionProvider;
-import org.keycloak.storage.federated.UserFederatedStorageProvider;
 import org.keycloak.vault.VaultTranscriber;
 
+import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 
 public class KeycloakSessionMock implements KeycloakSession {
     @Override
@@ -33,6 +34,16 @@ public class KeycloakSessionMock implements KeycloakSession {
         if (clazz == PasswordPolicyProvider.class) {
             return (T) new PasswordPolicyMockProvider();
         }
+        return null;
+    }
+
+    @Override
+    public <T extends Provider> T getComponentProvider(Class<T> aClass, String s) {
+        return null;
+    }
+
+    @Override
+    public <T extends Provider> T getComponentProvider(Class<T> aClass, String s, Function<KeycloakSessionFactory, ComponentModel> function) {
         return null;
     }
 
@@ -82,6 +93,16 @@ public class KeycloakSessionMock implements KeycloakSession {
     }
 
     @Override
+    public Map<String, Object> getAttributes() {
+        return null;
+    }
+
+    @Override
+    public void invalidate(InvalidationHandler.InvalidableObjectType invalidableObjectType, Object... objects) {
+
+    }
+
+    @Override
     public void enlistForClose(Provider provider) {
 
     }
@@ -102,7 +123,27 @@ public class KeycloakSessionMock implements KeycloakSession {
     }
 
     @Override
+    public ClientScopeProvider clientScopes() {
+        return null;
+    }
+
+    @Override
+    public GroupProvider groups() {
+        return null;
+    }
+
+    @Override
+    public RoleProvider roles() {
+        return null;
+    }
+
+    @Override
     public UserSessionProvider sessions() {
+        return null;
+    }
+
+    @Override
+    public UserLoginFailureProvider loginFailures() {
         return null;
     }
 
@@ -112,52 +153,17 @@ public class KeycloakSessionMock implements KeycloakSession {
     }
 
     @Override
+    public SingleUseObjectProvider singleUseObjects() {
+        return null;
+    }
+
+    @Override
     public void close() {
 
     }
 
     @Override
-    public UserCache userCache() {
-        return null;
-    }
-
-    @Override
     public UserProvider users() {
-        return null;
-    }
-
-    @Override
-    public ClientProvider clientStorageManager() {
-        return null;
-    }
-
-    @Override
-    public UserProvider userStorageManager() {
-        return null;
-    }
-
-    @Override
-    public UserCredentialManager userCredentialManager() {
-        return null;
-    }
-
-    @Override
-    public UserProvider userLocalStorage() {
-        return null;
-    }
-
-    @Override
-    public RealmProvider realmLocalStorage() {
-        return null;
-    }
-
-    @Override
-    public ClientProvider clientLocalStorage() {
-        return null;
-    }
-
-    @Override
-    public UserFederatedStorageProvider userFederatedStorage() {
         return null;
     }
 
